@@ -1,0 +1,14 @@
+
+# twitter config
+user : 'your-name'
+pass : 'your-passwd'
+
+# mongo config
+mongo_host : localhost
+mongo_port : 27017
+mongo_dbname : chirpstream
+
+# tokyo tyrant config
+ttdb : 
+     - name : tweets
+       port : 20020

@@ -1,0 +1,12 @@
+require 'rubygems'
+require 'yaml'
+require 'shinagawaseaside'
+
+begin
+  conf = YAML::load open(File.dirname(__FILE__)+'/config.yaml')
+rescue
+  STDERR.puts 'config.yaml load error'
+  exit 1
+end
+
+ShinagawaSeaside::set_tasks(conf['ttdb'], :basedir => File.dirname(__FILE__)+'/ttdb')
