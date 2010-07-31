@@ -7,6 +7,7 @@ require 'json'
 require 'yaml'
 require 'MeCab'
 $KCODE = 'u'
+$VERBOSE = nil
 
 conf = YAML::load open(File.dirname(__FILE__)+'/config.yaml')
 mecab = MeCab::Tagger.new('-Ochasen')
