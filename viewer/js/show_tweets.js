@@ -1,3 +1,5 @@
+var ws = null;
+
 var channel = {
     clients : [],
     subscribe : function(callback){
@@ -38,22 +40,35 @@ $(function(){
         div.append(permalink);
         $('div#tweets').prepend(div);
     });
+    
+    var connect = function(){
+        ws = new WebSocket('ws://'+$('#ws_addr').val());
 
-    var ws = new WebSocket('ws://localhost:8081');
-    ws.onopen = function(){
-        trace('connect');
+        ws.onopen = function(){
+            trace('connect');
+            $('#menu').hide();
+            $('#header').hide();
+        };
+        ws.onclose = function(){
+            trace('server closed');
+            var tid = setTimeout(function(){
+                if(ws == null || ws.readyState != 1){
+                    connect();
+                }
+            }, 3000);
+        };
+        ws.onmessage = function(e){
+            try{
+                console.log(e.data);
+                var msg = JSON.parse(e.data);
+                channel.push(msg);
+            }
+            catch(e){
+                console.error(e);
+            }
+        };
     };
-    ws.onclose = function(){
-        trace('server closed');
-    };
-    ws.onmessage = function(e){
-        try{
-            console.log(e.data);
-            var msg = JSON.parse(e.data);
-            channel.push(msg);
-        }
-        catch(e){
-            console.error(e);
-        }
-    };
+
+    $('#btn_open').click(connect);
+
 });
