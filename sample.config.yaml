@@ -12,3 +12,9 @@ mongo_dbname : chirpstream
 ttdb : 
      - name : tweets
        port : 20020
+
+# twitter oauth
+consumer_key : 'SmrSHrkB3xAABCOv9Av1A'
+consumer_secret : 'NVppoonw8jWVEtVQkyfSCeyBqEYCZh1L6KJHfkg19S0'
+access_token : '3631571-5ItlBKsRPCCsqbsLRVUl2cvuypMQiDIdHkjTkwoSdV'
+access_secret : 'W1RIiJKDtptSSarRM5ItYX2c3vmDHXzXwdeQy9wwIM'
