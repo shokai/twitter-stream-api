@@ -2,6 +2,13 @@ Twitter Stream API test
 =======================
 
 
+Install Dependencies
+--------------------
+
+    % gem install bundler
+    % bundle install
+
+
 Config
 ------
 
