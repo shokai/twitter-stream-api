@@ -1,2 +1,5 @@
 title : 'stream viewer'
 websocket : 'ws://localhost:8081'
+track :
+  - 'sfcifd'
+  - 'sfcph'

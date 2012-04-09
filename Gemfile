@@ -1,6 +1,5 @@
 source :rubygems
 
-gem 'ArgsParser'
 gem 'rainbow'
 gem 'oauth'
 gem 'twitter'
