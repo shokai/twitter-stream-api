@@ -9,7 +9,7 @@ UserStream.configure do |config|
   config.oauth_token_secret = @@conf['access_secret']
 end
 
-track = ARGV.join(' ') || 'sfcifd'
+track = ARGV.empty? ? 'http' : ARGV.join(' ')
 puts "track \"#{track}\""
 
 c = UserStream::Client.new
