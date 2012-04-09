@@ -4,7 +4,7 @@ require 'rainbow'
 
 @@conf = YAML::load open(File.dirname(__FILE__)+'/config.yaml')
 
-[:helper].each do |cat|
+[:helpers].each do |cat|
   Dir.glob(File.dirname(__FILE__)+"/#{cat}/*").each do |f|
     puts "loading #{f}"
     require f
