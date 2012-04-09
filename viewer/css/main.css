@@ -1,12 +1,20 @@
 .permalink {
-  font-size: 80%; }
+  font-size: 80%;
+}
 
 a {
-  color: #b4b4ff; }
+  color: #b4b4ff;
+}
 
 body {
   background-color: #111;
-  color: #dddddd; }
-  body div {
-    margin: 10px;
-    font-size: 95%; }
+  color: #dddddd;
+}
+body div {
+  margin: 10px;
+  font-size: 95%;
+}
+
+#status {
+  font-size : 95%;
+}

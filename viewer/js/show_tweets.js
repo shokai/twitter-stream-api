@@ -22,8 +22,8 @@ var channel = {
 
 
 $(function(){
-    var trace = function(msg){
-        $('div#tweets').prepend($('<p>').html(msg));
+    var status = function(msg){
+        $('#status').html(msg).css('opacity', 1.0).animate({opacity: 0}, 2000);
     };
 
     channel.subscribe(function(status){
@@ -38,19 +38,19 @@ $(function(){
         div.append(status.text.replace(/(https?:\/\/[^\s]+)/gi, "<a href=\"$1\">$1</a>"));
         div.append('&nbsp;');
         div.append(permalink);
-        $('div#tweets').prepend(div);
+        $('#tweets').prepend(div);
     });
     
     var connect = function(){
         ws = new WebSocket('ws://'+$('#ws_addr').val());
 
         ws.onopen = function(){
-            trace('connect');
+            status('connect');
             $('#menu').hide();
             $('#header').hide();
         };
         ws.onclose = function(){
-            trace('server closed');
+            status('server closed');
             var tid = setTimeout(function(){
                 if(ws == null || ws.readyState != 1){
                     connect();
@@ -59,7 +59,6 @@ $(function(){
         };
         ws.onmessage = function(e){
             try{
-                console.log(e.data);
                 var msg = JSON.parse(e.data);
                 channel.push(msg);
             }
