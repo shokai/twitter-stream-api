@@ -1,10 +1,9 @@
-- content_for :title do
-  = @title
+- content_for :header do
+  %h1= app_title
 
-- content_for :head do
-  :javascript
-    var app_root = "#{app_root}";
-    var websocket_url = "#{websocket_url}";
-  %script{:type => 'text/javascript', :src => "#{app_root}/js/show_tweets.js"}
+%h2 track words
+%ul
+- tracks.each do |t|
+  %li
+    %a{:href => "#{app_root}/track/#{t}"}= t
 
-%div#tweets

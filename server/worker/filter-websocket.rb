@@ -18,15 +18,24 @@ UserStream.configure do |config|
 end
 
 puts "track \"#{@@conf['track'].join(',')}\""
-
 port = URI.parse(@@conf['websocket']).port
 
 @@channel = EM::Channel.new
+@@logs = Array.new
+@@channel.subscribe{|data|
+  @@logs.push data
+  while @@logs.size > 100000
+    @@logs.shift
+  end
+}
 EM::run do
   EM::WebSocket.start(:host => '0.0.0.0', :port => port) do |ws|
     ws.onopen do
       sid = @@channel.subscribe do |mes|
         ws.send mes
+      end
+      @@logs.each do |log|
+        ws.send log
       end
       puts "* new websocket client <#{sid}> connected"
       ws.onmessage do |mes|

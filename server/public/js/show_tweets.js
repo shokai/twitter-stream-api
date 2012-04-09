@@ -25,6 +25,7 @@ $(function(){
     };
 
     var show_tweet = function(status){
+        if(!status.text.match(new RegExp(track))) return;
         var div = $('<div>');
         var icon = $('<img>').attr('src',status.user.profile_image_url).attr('width',48).attr('height',48);
         var name = $('<a>').attr('href', 'http://twitter.com/'+status.user.screen_name).html(status.user.screen_name);
