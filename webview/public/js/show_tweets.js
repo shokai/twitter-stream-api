@@ -24,13 +24,12 @@ $(function(){
         $('div#tweets').prepend($('<p>').html(msg));
     };
 
-    var show_tweet = function(status){
+    channel.subscribe(function(status){
         if(!status.text.match(new RegExp(track))) return;
         var div = $('<div>');
         var icon = $('<img>').attr('src',status.user.profile_image_url).attr('width',48).attr('height',48);
         var name = $('<a>').attr('href', 'http://twitter.com/'+status.user.screen_name).html(status.user.screen_name);
         var permalink = $('<a>').addClass('permalink').attr('href', 'http://twitter.com/'+status.user.screen_name+'/status/'+status.id).html('[detail]');
-
         div.append(icon);
         div.append('&nbsp;');
         div.append(name);
@@ -39,7 +38,7 @@ $(function(){
         div.append('&nbsp;')
         div.append(permalink);
         $('div#tweets').prepend(div);
-    };
+    });
 
     var ws = new WebSocket(websocket_url);
     ws.onopen = function(){
@@ -51,7 +50,7 @@ $(function(){
     ws.onmessage = function(e){
         try{
             var data = JSON.parse(e.data);
-            show_tweet(data);
+            channel.push(data);
         }
         catch(e){
             console.error(e);
