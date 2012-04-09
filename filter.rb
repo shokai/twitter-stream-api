@@ -16,6 +16,7 @@ c.endpoint = 'https://stream.twitter.com/'
 c.post('/1/statuses/filter.json', {:track => track}) do |s|
   begin
     line = "@#{s.user.screen_name} : #{s.text}"
+    Log.puts line
     puts line.split(/(@[a-zA-Z0-9_]+)/).map{|term|
       if term =~ /@[a-zA-Z0-9_]+/
         term = term.color(color_code term).bright.underline
@@ -23,6 +24,6 @@ c.post('/1/statuses/filter.json', {:track => track}) do |s|
       term
     }.join('')
   rescue => e
-    
+    Log.puts "error : #{e}"
   end
 end

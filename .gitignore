@@ -1,9 +1,6 @@
-DS_Store
+.DS_Store
 *~
-ttdb/*
-*.tch
-*.pid
-.fuse*
+*.log
 config.yaml
 .\#*
 *\#*
