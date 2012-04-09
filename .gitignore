@@ -6,3 +6,4 @@
 config.yaml
 .\#*
 *\#*
+.sass-cache

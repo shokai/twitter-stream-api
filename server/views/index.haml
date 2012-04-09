@@ -1,0 +1,10 @@
+- content_for :title do
+  = @title
+
+- content_for :head do
+  :javascript
+    var app_root = "#{app_root}";
+    var websocket_url = "#{websocket_url}";
+  %script{:type => 'text/javascript', :src => "#{app_root}/js/show_tweets.js"}
+
+%div#tweets

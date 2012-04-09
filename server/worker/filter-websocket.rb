@@ -3,6 +3,7 @@ require File.dirname(__FILE__)+'/../../bootstrap'
 require 'eventmachine'
 require 'em-websocket'
 require 'user_stream'
+require 'json'
 require 'ArgsParser'
 
 parser = ArgsParser.parser

@@ -1,0 +1,23 @@
+
+$font_white : #DDD;
+
+@mixin content {
+  div {
+    margin : 10px;
+    font-size : 95%;
+  }
+}
+
+.permalink {
+  font-size : 80%;
+}
+
+a {
+  color : rgb(180,180,255);
+}
+
+body {
+  @include content;
+  background-color : #111;
+  color : $font_white;
+}
