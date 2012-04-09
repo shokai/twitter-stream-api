@@ -1,5 +1,5 @@
 #!/usr/bin/env ruby
-require File.dirname(__FILE__)+'/bootstrap'
+require File.dirname(__FILE__)+'/../bootstrap'
 require 'user_stream'
 
 UserStream.configure do |config|
