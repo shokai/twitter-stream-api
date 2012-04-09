@@ -10,13 +10,14 @@ UserStream.configure do |config|
 end
 
 track = ARGV.join(' ') || 'sfcifd'
+puts "track \"#{track}\""
 
 c = UserStream::Client.new
 c.endpoint = 'https://stream.twitter.com/'
 c.post('/1/statuses/filter.json', {:track => track}) do |s|
   begin
     line = "@#{s.user.screen_name} : #{s.text}"
-    Log.puts line
+    Log.puts "#{line} - http://twitter.com/#{s.user.screen_name}/status/#{s.id}"
     puts line.split(/(@[a-zA-Z0-9_]+)/).map{|term|
       if term =~ /@[a-zA-Z0-9_]+/
         term = term.color(color_code term).bright.underline
