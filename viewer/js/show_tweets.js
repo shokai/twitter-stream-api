@@ -23,19 +23,19 @@ var channel = {
 
 $(function(){
     var status = function(msg){
-        $('#status').html(msg).css('opacity', 1.0).animate({opacity: 0}, 2000);
+        $('#status').text(msg).css('opacity', 1.0).animate({opacity: 0}, 2000);
     };
 
     channel.subscribe(function(status){
         var div = $('<div>');
         var icon = $('<img>').attr('src',status.user.profile_image_url).attr('width',48).attr('height',48);
-        var name = $('<a>').attr('href', 'http://twitter.com/'+status.user.screen_name).html(status.user.screen_name);
-        var permalink = $('<a>').addClass('permalink').attr('href', 'http://twitter.com/'+status.user.screen_name+'/status/'+status.id).html('[detail]');
+        var name = $('<a>').attr('href', 'http://twitter.com/'+status.user.screen_name).text(status.user.screen_name);
+        var permalink = $('<a>').addClass('permalink').attr('href', 'http://twitter.com/'+status.user.screen_name+'/status/'+status.id).text('[detail]');
         div.append(icon);
         div.append('&nbsp;');
         div.append(name);
         div.append($('<br>'));
-        div.append(status.text.replace(/(https?:\/\/[^\s]+)/gi, "<a href=\"$1\">$1</a>"));
+        div.append($('<span>').text(status.text.replace(/(https?:\/\/[^\s]+)/gi, "<a href=\"$1\">$1</a>")));
         div.append('&nbsp;');
         div.append(permalink);
         $('#tweets').prepend(div);
