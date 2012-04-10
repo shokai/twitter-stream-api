@@ -1,3 +1,11 @@
+String.prototype.escape_html = function(){
+    var span = document.createElement('span');
+    var txt =  document.createTextNode('');
+    span.appendChild(txt);
+    txt.data = this;
+    return span.innerHTML;
+};
+
 var ws = null;
 
 var channel = {
@@ -35,7 +43,7 @@ $(function(){
         div.append('&nbsp;');
         div.append(name);
         div.append($('<br>'));
-        div.append($('<span>').text(status.text.replace(/(https?:\/\/[^\s]+)/gi, "<a href=\"$1\">$1</a>")));
+        div.append($('<span>').html(status.text.escape_html().replace(/(https?:\/\/[^\s]+)/gi, "<a href=\"$1\">$1</a>")));
         div.append('&nbsp;');
         div.append(permalink);
         $('#tweets').prepend(div);
