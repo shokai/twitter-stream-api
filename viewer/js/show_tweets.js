@@ -36,7 +36,7 @@ $(function(){
 
     channel.subscribe(function(status){
         var div = $('<div>');
-        var icon = $('<img>').attr('src',status.user.profile_image_url).attr('width',48).attr('height',48);
+        var icon = $('<img>').attr('src',status.user.profile_image_url).attr('width',24).attr('height',24);
         var name = $('<a>').attr('href', 'http://twitter.com/'+status.user.screen_name).text(status.user.screen_name);
         var permalink = $('<a>').addClass('permalink').attr('href', 'http://twitter.com/'+status.user.screen_name+'/status/'+status.id).text('[detail]');
         div.append(icon);

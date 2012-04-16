@@ -9,6 +9,7 @@ a {
 body {
   background-color: #111;
   color: #dddddd;
+  font-size : larger;
 }
 body div {
   margin: 10px;
