@@ -13,8 +13,7 @@ track = ARGV.empty? ? 'http' : ARGV.join(' ')
 puts "track \"#{track}\""
 
 c = UserStream::Client.new
-c.endpoint = 'https://stream.twitter.com/'
-c.post('/1/statuses/filter.json', {:track => track}) do |s|
+c.filter({:track => track}) do |s|
   begin
     line = "@#{s.user.screen_name} : #{s.text}"
     Log.puts "#{line} - http://twitter.com/#{s.user.screen_name}/status/#{s.id}"

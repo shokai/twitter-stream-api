@@ -55,8 +55,7 @@ EM::run do
 
   EM::defer do
     c = UserStream::Client.new
-    c.endpoint = 'https://stream.twitter.com/'
-    c.post('/1/statuses/filter.json', {:track => params[:track]}) do |s|
+    c.filter({:track => params[:track]}) do |s|
       begin
         pat = /(https?:\/\/[-_.!~*\'()a-zA-Z0-9;\/?:\@&=+\$,%#]+)/
         s.text = s.text.split(pat).map{|i|
