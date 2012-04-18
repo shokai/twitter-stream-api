@@ -13,12 +13,7 @@ c = UserStream::Client.new
 c.user do |s|
   begin
     line = "@#{s.user.screen_name} : #{s.text}"
-    puts line.split(/(@[a-zA-Z0-9_]+)/).map{|term|
-      if term =~ /@[a-zA-Z0-9_]+/
-        term = term.color(color_code term).bright.underline
-      end
-      term
-    }.join('')
+    puts line.colorize(/@[a-zA-Z0-9_]+/)
   rescue => e
     p s
   end

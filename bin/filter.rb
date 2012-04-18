@@ -17,12 +17,7 @@ c.filter({:track => track}) do |s|
   begin
     line = "@#{s.user.screen_name} : #{s.text}"
     Log.puts "#{line} - http://twitter.com/#{s.user.screen_name}/status/#{s.id}"
-    puts line.split(/(@[a-zA-Z0-9_]+)/).map{|term|
-      if term =~ /@[a-zA-Z0-9_]+/
-        term = term.color(color_code term).bright.underline
-      end
-      term
-    }.join('')
+    puts line.colorize(/@[a-zA-Z0-9_]+/)
   rescue => e
     Log.puts "error : #{e}"
   end

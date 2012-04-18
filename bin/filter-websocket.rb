@@ -66,7 +66,8 @@ EM::run do
           end
           res
         }.join('')
-        puts line = "@#{s.user.screen_name} : #{s.text}"
+        line = "@#{s.user.screen_name} : #{s.text}"
+        puts line.colorize(/@[a-zA-Z0-9_]+/)
         Log.puts "#{line} - http://twitter.com/#{s.user.screen_name}/status/#{s.id}" unless params[:nolog]
         @@channel.push s.to_json
       rescue => e
